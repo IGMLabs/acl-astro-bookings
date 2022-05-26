@@ -4,3 +4,9 @@
 .pending {
   font-style: italic;
  }
+ .waiting {
+color: orange;
+ }
+ .confirmed{
+color: green;
+ }
