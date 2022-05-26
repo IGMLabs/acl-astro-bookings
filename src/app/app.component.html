@@ -1,16 +1,39 @@
 <body>
 
 <header>
-    <h1> 💋Astro Bookings</h1>
+  <nav>
+    <ul>
+      <li>
+        <strong>🚀 {{ title | uppercase }}</strong>
+      </li>
+    </ul>
+  </nav>
+
 </header>
 
 <main>
+    <article>
+      <h3> Trabajando con {{getAgenciesLength()}} agencias</h3>
+      <ul>
+        <li *ngFor="let agency of agencies">
+          <span [ngClass]="agency.status | lowercase">{{ agency.name }}</span>
+          <ng-container *ngIf="agency.range==='Interplanetary' then interplanetario; else orbital">Esto aparece</ng-container>
+          <ng-template #interplanetario> 🎇 </ng-template>
+          <ng-template #orbital> 🧨 </ng-template>
+          <!-- <span *ngIf="agency.range==='Interplanetary'">🎇</span>
+          <span *ngIf="agency.range==='Orbital'">🧨</span> -->
+        </li>
 
+      </ul>
+      <button (click)="reload('agencies')"> 😎 </button>
+    </article>
+    <aside *ngIf="reloading">😎 Reloading</aside>
 </main>
 
 <footer>
-  <p> 😊Astro Bookings </p>
-  <p> 🙌Bienvenid@! </p>
+  <p> 😊{{ title | uppercase }} </p>
+  <p> 🙌{{ subtitle }}  </p>
+  <a [href]="authorUrl"> {{ author }} </a>
 </footer>
 
 </body>
