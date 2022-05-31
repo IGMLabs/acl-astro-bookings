@@ -9,10 +9,10 @@ const routes: Routes = [
     component: HomePage
   },
   // No haria falta hacer la carga perezosa de forma manual, hay comando ( ng g m about --route=about --module=app )
-  // {
-  //   path:'about',
-  //   loadChildren: () => import('./about/about.module').then( (m) => m.AboutModule),
-  // },
+   {
+     path:'about',
+     loadChildren: () => import('./about/about.module').then( (m) => m.AboutModule),
+   },
 ];
 
 @NgModule({
