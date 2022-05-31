@@ -8,7 +8,7 @@ const routes: Routes = [
     path:'',
     component: HomePage
   },
-  // No haria falta hacer la carga perezosa de forma manual, hay comando ( ng  )
+  // No haria falta hacer la carga perezosa de forma manual, hay comando ( ng g m about --route=about --module=app )
   // {
   //   path:'about',
   //   loadChildren: () => import('./about/about.module').then( (m) => m.AboutModule),
