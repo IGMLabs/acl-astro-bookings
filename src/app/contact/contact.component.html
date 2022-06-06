@@ -1,12 +1,35 @@
 <form [formGroup]="form">
   <div>
-    <label for="name">Name</label><span *ngIf="form.get('name')?.invalid">🎈</span>
+    <label for="name">Name</label>
     <input type="text"
            id="name"
            name="name"
            formControlName="name"
-           placeholder="Your name">
-           <small *ngIf="form.get('name')?.invalid && form.get('name')?.touched ">🎡Campo Requerido</small>
+           placeholder="Your name"
+           [attr.aria-invalid]="hasErrors('name')">
+    <small *ngIf="mustShowMessage('name')">{{ getErrorMessage('name') }}</small>
   </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input type="email"
+           id="email"
+           name="email"
+           formControlName="email"
+           placeholder="Your email"
+           [attr.aria-invalid]="hasErrors('email')">
+    <small *ngIf="mustShowMessage('email')">{{ getErrorMessage('email') }}</small>
+  </div>
+
+  <div>
+    <label for="message">Message</label>
+    <textarea id="message"
+              name="message"
+              formControlName="message"
+              placeholder="Your message"
+              [attr.aria-invalid]="hasErrors('message')"></textarea>
+    <small *ngIf="mustShowMessage('message')">{{ getErrorMessage('message') }}</small>
+  </div>
+
   <button [disabled]="form.invalid" (click)="onSave()">Save</button>
 </form>
