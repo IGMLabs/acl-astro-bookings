@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register-form',
@@ -19,11 +19,34 @@ constructor( formBuilder:FormBuilder ) {
     password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
     confirmaPassword: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
     aceptaTerms: new FormControl (false, [Validators.requiredTrue]),
+  },
+  // Configuracion grupal a continuacion
+  {
+    // no la inicializo, solo le apunto a la funcion
+    validators:[this.passIguales],
   });
 }
 
+// le pasamos el formulario con AbstractControl en este punto.
+private passIguales(form: AbstractControl): ValidationErrors | null{
+  const password = form.get('password');
+  const confirmarPassword = form.get('confirmaPassword');
+  if (!password || !confirmarPassword){
+    return {
+      confirmarPassword: 'Debes introducir la password',
+    };
+  }
+  if (password.value !== confirmarPassword.value) {
+      return {
+        confirmarPassword: 'Las password no son iguales',
+     };
+  }
+  return null;
+}
+
+
 public hasErrors( controlName:string ):boolean {
-  const control = this.getControl('name');
+  const control = this.getControl(controlName);
   if (!control) return false;
   return control.invalid;
 }
@@ -50,6 +73,13 @@ public getErrorMessage(controlName:string) : string {
 }
 
 
+public getPasswordMatchMessage(){
+  const errors = this.form.errors;
+  if(!errors) return'';
+  if(errors['confirmarPassword']) return errors['confirmarPassword'];
+  return '';
+}
+
 public getControl(controlName: string): AbstractControl | null {
   return this.form.get(controlName);
 }
@@ -57,8 +87,9 @@ public getControl(controlName: string): AbstractControl | null {
 
 
 public onSave(){
-    const contact = this.form.value;
-    console.warn('Send contact message', contact);
+    const { name, email, password } = this.form.value;
+    const register = { name, email, password };
+    console.warn('Send register', register);
 }
 
 

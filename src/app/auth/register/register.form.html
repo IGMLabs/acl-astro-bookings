@@ -39,6 +39,7 @@
               formControlName="confirmaPassword"
               [attr.aria-invalid]="hasErrors('confirmaPassword')">
     <small *ngIf="mustShowMessage('confirmaPassword')">{{ getErrorMessage('confirmaPassword') }}</small>
+    <small>{{ getPasswordMatchMessage() }}</small>
   </div>
 
   <div>
@@ -51,5 +52,6 @@
     <small *ngIf="mustShowMessage('aceptaTerms')">{{ getErrorMessage('aceptaTerms') }}</small>
   </div>
 
+  <pre> {{ form.errors | json }} </pre>
   <button [disabled]="form.invalid" (click)="onSave()">Save</button>
 </form>

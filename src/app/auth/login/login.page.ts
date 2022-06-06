@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-form',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.css']
 })

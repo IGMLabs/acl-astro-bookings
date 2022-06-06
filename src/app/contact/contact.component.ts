@@ -27,7 +27,7 @@ export class ContactComponent implements OnInit {
   }
 
   public hasErrors( controlName:string ):boolean {
-    const control = this.getControl('name');
+    const control = this.getControl(controlName);
     if (!control) return false;
     return control.invalid;
   }
