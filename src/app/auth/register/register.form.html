@@ -1,0 +1,55 @@
+<form [formGroup]="form">
+  <div>
+    <label for="name">Name</label>
+    <input type="text"
+           id="name"
+           name="name"
+           formControlName="name"
+           placeholder="Your name"
+           [attr.aria-invalid]="hasErrors('name')">
+    <small *ngIf="mustShowMessage('name')">{{ getErrorMessage('name') }}</small>
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input type="email"
+           id="email"
+           name="email"
+           formControlName="email"
+           placeholder="Your email"
+           [attr.aria-invalid]="hasErrors('email')">
+    <small *ngIf="mustShowMessage('email')">{{ getErrorMessage('email') }}</small>
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password"
+           id="password"
+           name="password"
+           formControlName="password"
+           [attr.aria-invalid]="hasErrors('password')">
+    <small *ngIf="mustShowMessage('password')">{{ getErrorMessage('password') }}</small>
+  </div>
+
+  <div>
+    <label for="confirmaPassword">Confirmar Password</label>
+    <input    type="password"
+              id="confirmaPassword"
+              name="confirmaPassword"
+              formControlName="confirmaPassword"
+              [attr.aria-invalid]="hasErrors('confirmaPassword')">
+    <small *ngIf="mustShowMessage('confirmaPassword')">{{ getErrorMessage('confirmaPassword') }}</small>
+  </div>
+
+  <div>
+    <label for="password">Aceptar términos</label>
+    <input type="checkbox"
+           id="aceptaTerms"
+           name="aceptaTerms"
+           formControlName="aceptaTerms"
+           [attr.aria-invalid]="hasErrors('aceptaTerms')">
+    <small *ngIf="mustShowMessage('aceptaTerms')">{{ getErrorMessage('aceptaTerms') }}</small>
+  </div>
+
+  <button [disabled]="form.invalid" (click)="onSave()">Save</button>
+</form>
