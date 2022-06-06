@@ -13,11 +13,7 @@ export class HomePage implements OnInit {
   public authorUrl = 'https://www.google.com';
 
 
-
-
 public reloading = false;
-
-
 
 
 public reload(lista: string) {
