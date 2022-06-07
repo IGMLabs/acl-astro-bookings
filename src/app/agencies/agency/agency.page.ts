@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-agency',
+  // selector: 'app-agency', Se borra porque no se llega a usar
   templateUrl: './agency.page.html',
   styleUrls: ['./agency.page.css']
 })

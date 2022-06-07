@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-
-interface Contact {
-  name: string;
-  email:string;
-  message:string;
-}
+import { AbstractControl,
+         FormBuilder,
+         FormControl,
+         FormGroup,
+         Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  selector: 'app-contact-form',
+  templateUrl: './contact.form.html',
+  styleUrls: ['./contact.form.css']
 })
-export class ContactComponent implements OnInit {
+export class ContactForm implements OnInit {
+
 
   // public form!: FormGroup;  // opcion 1 de crear una propiedad publica sin inicializar.
   public form : FormGroup;

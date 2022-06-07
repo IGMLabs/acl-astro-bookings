@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ContactRoutingModule } from './contact-routing.module';
-import { ContactComponent } from './contact.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ContactForm } from './contact.form';
+import { ContactPage } from './contact.page';
 
 
 @NgModule({
   declarations: [
-    ContactComponent
+    ContactForm,
+    ContactPage
   ],
   imports: [
     CommonModule,

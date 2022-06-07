@@ -9,8 +9,8 @@ import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
-    NewAgencyPage,
-    NewAgencyForm
+    NewAgencyForm,
+    NewAgencyPage
   ],
   imports: [
     CommonModule,

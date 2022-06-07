@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login-form',
+  // selector: 'app-login-page', Se borra porque no se llega a usar
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.css']
 })

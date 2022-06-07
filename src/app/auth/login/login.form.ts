@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
 
 @Component({
   selector: 'app-login-form',
@@ -7,7 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginForm implements OnInit {
 
-  constructor() { }
+  public form: FormGroup;
+
+  constructor(formBuilder: FormBuilder, public fms: FormMessagesService) {
+    this.form = formBuilder.group({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
+    });
+  }
+
+
+  public hasError(controlName: string):boolean {
+    return this.fms.hasError(this.form, controlName);
+  }
+
+  public mustShowMessage(controlName: string): boolean {
+    return this.fms.mustShowMessage(this.form, controlName);
+  }
+
+
+  public getErrorMessage(controlName: string): string {
+    return this.fms.getErrorMessage(this.form, controlName);
+  }
+
+  public onSave() {
+    const {email, password} = this.form.value;
+    const login = {email, password};
+    console.warn('Send Login', login);
+  }
+
 
   ngOnInit(): void {
   }

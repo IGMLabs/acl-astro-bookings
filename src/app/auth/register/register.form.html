@@ -32,24 +32,24 @@
   </div>
 
   <div>
-    <label for="confirmaPassword">Confirmar Password</label>
+    <label for="confirmPassword">Confirmar Password</label>
     <input    type="password"
-              id="confirmaPassword"
-              name="confirmaPassword"
-              formControlName="confirmaPassword"
-              [attr.aria-invalid]="hasError('confirmaPassword')">
-    <small *ngIf="mustShowMessage('confirmaPassword')">{{ getErrorMessage('confirmaPassword') }}</small>
+              id="confirmPassword"
+              name="confirmPassword"
+              formControlName="confirmPassword"
+              [attr.aria-invalid]="hasError('confirmPassword')">
+    <small *ngIf="mustShowMessage('confirmaPassword')">{{ getErrorMessage('confirmPassword') }}</small>
     <small>{{ getPasswordMatchMessage() }}</small>
   </div>
 
   <div>
-    <label for="password">Aceptar términos</label>
+    <label for="acceptTerms">Aceptar términos</label>
     <input type="checkbox"
-           id="aceptaTerms"
-           name="aceptaTerms"
-           formControlName="aceptaTerms"
-           [attr.aria-invalid]="hasError('aceptaTerms')">
-    <small *ngIf="mustShowMessage('aceptaTerms')">{{ getErrorMessage('aceptaTerms') }}</small>
+           id="acceptTerms"
+           name="acceptTerms"
+           formControlName="acceptTerms"
+           [attr.aria-invalid]="hasError('acceptTerms')">
+    <small *ngIf="mustShowMessage('acceptTerms')">{{ getErrorMessage('acceptTerms') }}</small>
   </div>
 
   <pre> {{ form.errors | json }} </pre>
