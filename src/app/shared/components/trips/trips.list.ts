@@ -15,7 +15,6 @@ export class TripsList implements OnInit {
     console.log('Reloading.....'+lista);
   }
 
-
   trips = [
     {
       id: 'space-y-moon-1',
