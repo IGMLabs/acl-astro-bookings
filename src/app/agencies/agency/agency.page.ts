@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, ActivatedRoute } from '@angular/router';
+import { Agency } from 'src/app/core/api/agency.interface';
+import { AgenciesApi } from '../../core/api/agencies.api';
 
 @Component({
   // selector: 'app-agency', Se borra porque no se llega a usar
@@ -8,10 +10,13 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
 })
 export class AgencyPage implements OnInit {
 
-  agencyId: string;
-  constructor( route:ActivatedRoute ) {
+  public agencyId: string;
+  public agency?: Agency;
+
+  constructor( route:ActivatedRoute, agenciesApi: AgenciesApi ) {
     this.agencyId = route.snapshot.paramMap.get('id')!;
     //this.agencyId = route.snapshot.paramMap.get('id') || '';  OPCION 2
+    this.agency = agenciesApi.getById(this.agencyId);
    }
 
   ngOnInit(): void {

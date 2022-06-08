@@ -1,49 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { AgenciesApi } from 'src/app/core/api/agencies.api';
 import { Agency } from 'src/app/core/api/agency.interface';
 
 @Component({
   selector: 'app-agencies-list',
   templateUrl: './agencies.list.html',
-  styleUrls: ['./agencies.list.css']
+  styleUrls: ['./agencies.list.css'],
 })
 export class AgenciesList implements OnInit {
-
-  agencies: Agency[] = [
-    {
-      id: 'space-a',
-      name: 'Space A',
-      range: 'Interplanetary',
-      status: 'Active',
-    },
-    {
-      id: 'dark-origin',
-      name: 'Dark Origin',
-      range: 'Orbital',
-      status: 'Active',
-    },
-    {
-      id: 'trasiego-air',
-      name: 'Trasiego Air',
-      range: 'Orbital',
-      status: 'Pending',
-    },
-  ];
+  public agencies: Agency[];
 
   public reloading = false;
 
-  constructor() { }
-
-
-  public reload(lista: string) {
-    this.reloading=true;
-    console.log('Reloading.....'+lista);
+  constructor(agenciesApi: AgenciesApi) {
+    this.agencies = agenciesApi.getAll();
   }
 
-  public getAgenciesLength(){
+  public reload(list: string) {
+    this.reloading = true;
+    console.log('Reloading...' + list);
+  }
+
+  public getAgenciesLength() {
     return this.agencies.length;
-    }
-
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {}
 }

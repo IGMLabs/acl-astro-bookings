@@ -9,6 +9,8 @@ import { FormMessagesService } from 'src/app/core/services/forms/form-messages.s
 import { FormValidationsService } from 'src/app/core/services/forms/form-validations.service';
 import { FormBase } from 'src/app/core/services/forms/form.base';
 import { CommonService } from '../../core/services/common/common.service';
+import { AgenciesApi } from '../../core/api/agencies.api';
+import { Agency } from 'src/app/core/api/agency.interface';
 
 @Component({
   selector: 'app-new-trip-form',
@@ -17,38 +19,22 @@ import { CommonService } from '../../core/services/common/common.service';
 })
 export class NewTripForm extends FormBase implements OnInit {
 
-  public start_date = 0;
+  // public start_date = 0;
 
-  public agencies = [
-    {
-      id: 'space-y',
-      name: 'Space Y',
-      range: 'Interplanetary',
-      status: 'Active',
-    },
-    {
-      id: 'green-origin',
-      name: 'Green Origin',
-      range: 'Orbital',
-      status: 'Active',
-    },
-    {
-      id: 'virgin-way',
-      name: 'Virgin Way',
-      range: 'Orbital',
-      status: 'Pending',
-    },
-  ];
+  public agencies: Agency[] ;
 
   constructor(
               formBuilder: FormBuilder,
               private fvs: FormValidationsService,
               fms: FormMessagesService,
-              private cs: CommonService
+              private cs: CommonService,
+              agenciesApi: AgenciesApi,
               ) {
 
     // Form base
     super(fms);
+
+    this.agencies = agenciesApi.getAll();
 
     this.form = formBuilder.group({
       agency: new FormControl('', [Validators.required]),
