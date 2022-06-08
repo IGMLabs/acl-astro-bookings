@@ -1,7 +1,7 @@
 <article>
   <h3>Viajes {{ getTripsLength() }} </h3>
   <ul>
-    <li *ngFor="let trip of trips">
+    <li *ngFor="let trip of tripsHijo">
       <a [routerLink]="['/','trips','trip', trip.id]"
          [ngClass]="getClassForStatus(trip.status)">{{ trip.id }}</a>
       <!-- <span>{{ trip.agencyId }}</span>
@@ -22,5 +22,5 @@
       <span>{{ trip.premiumFoodPrice }}</span>
     </li>
   </ul>
-  <button (click)="reload('trips')">🎈</button>
+  <button (click)="onReloadClick()">🎈</button>
 </article>

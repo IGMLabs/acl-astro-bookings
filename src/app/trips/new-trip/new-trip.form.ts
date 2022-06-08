@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
-  FormGroup,
   Validators
 } from '@angular/forms';
 import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
@@ -21,7 +20,8 @@ export class NewTripForm extends FormBase implements OnInit {
 
   // public start_date = 0;
 
-  public agencies: Agency[] ;
+  @Input() public agencies: Agency[] ;
+  @Output() public save = new EventEmitter();
 
   constructor(
               formBuilder: FormBuilder,
@@ -54,6 +54,7 @@ export class NewTripForm extends FormBase implements OnInit {
     const id = this.cs.getDashId(agency + "-" + destination);
     const newTripData = { id, agency, destination, places, start_date, end_date, flightPrice };
     console.warn('Send trip data ', newTripData)
+    this.save.emit(newTripData);
   }
 
   ngOnInit(): void { }

@@ -1,4 +1,4 @@
-<app-agencies-list></app-agencies-list>
-<app-trips-list></app-trips-list>
+<app-agencies-list [agenciesHijo]="agenciesPadre" ></app-agencies-list>
+<app-trips-list [tripsHijo]="tripsPadre"></app-trips-list>
 
 <app-reloading *ngIf="reloading"></app-reloading>

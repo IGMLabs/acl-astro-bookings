@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { Trip } from 'src/app/core/api/trip.interface';
-import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
-import { TripsApi } from '../../../core/api/trips.api';
 
 @Component({
   selector: 'app-trips-list',
@@ -10,28 +9,20 @@ import { TripsApi } from '../../../core/api/trips.api';
 })
 export class TripsList implements OnInit {
 
-  public trips: Trip[];
-  public reloading = false;
+  // Aqui se indica qque los trips se reciben del padre(trips.page.ts)
+  @Input() tripsHijo: Trip[] = [];
+
+  // Aqui creamos el nuevo evento para enviarle al padre.
+  @Output() private reload = new EventEmitter();
 
 
-  public reload(lista: string) {
-    this.reloading = true;
-    console.log('Reloading.....' + lista);
+  // El evento reload lo lanzamos al ejecutar esta funcion
+  public onReloadClick() {
+    this.reload.emit();
   }
-
-
-  constructor(tripsApi: TripsApi,
-    fms: FormMessagesService,
-  ) {
-    // super(fms);
-    this.trips = tripsApi.getAll();
-
-  }
-
-
 
   public getTripsLength(){
-    return this.trips.length;
+    return this.tripsHijo.length;
     }
 
   public getClassForStatus(status: string) {

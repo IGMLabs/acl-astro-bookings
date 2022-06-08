@@ -1,7 +1,7 @@
 <article>
   <h3> Trabajando con {{getAgenciesLength()}} agencias</h3>
   <ul>
-    <li *ngFor="let agency of agencies">
+    <li *ngFor="let agency of agenciesHijo">
       <a [routerLink]="['/','agencies','agency', agency.id ]"
          [ngClass]="agency.status | lowercase">{{ agency.name }}</a>
       <ng-container *ngIf="agency.range==='Interplanetary' then interplanetario; else orbital">Esto aparece</ng-container>
@@ -11,5 +11,5 @@
       <span *ngIf="agency.range==='Orbital'">🧨</span> -->
     </li>
   </ul>
-  <button (click)="reload('agencies')"> 😎 </button>
+  <button (click)="onReloadClick('agencies')"> 😎 </button>
 </article>

@@ -1,7 +1,3 @@
-<article>
-  <header>
-    <strong>{{ agencyId }}</strong>
-  </header>
-  <pre> {{ agency | json }} </pre>
-  <p>Details are a work in progress...</p>
-</article>
+<app-agency-view [agencyId]="agencyId"
+                 [agency]="agency">
+</app-agency-view>

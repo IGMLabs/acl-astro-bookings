@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Agency } from '../core/api/agency.interface';
+import { Trip } from '../core/api/trip.interface';
+import { TripsApi } from '../core/api/trips.api';
+import { AgenciesApi } from '../core/api/agencies.api';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
+tripsPadre: Trip[] = [];
+agenciesPadre: Agency[] = [];
 
 public reloading = false;
 
@@ -16,7 +22,11 @@ public reload(lista: string) {
   console.log('Reloading.....'+lista);
 }
 
-  constructor() { }
+  constructor( tripsApi:TripsApi, agenciesApi:AgenciesApi ) {
+      this.tripsPadre = tripsApi.getAll();
+      this.agenciesPadre = agenciesApi.getAll();
+
+   }
 
   ngOnInit(): void {
   }

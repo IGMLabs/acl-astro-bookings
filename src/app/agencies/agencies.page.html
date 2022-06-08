@@ -2,5 +2,6 @@
     <a role="button"
       routerLink="agency/new">Add a new Agency</a>
 </nav>
-<app-agencies-list></app-agencies-list>
+<!-- Le paso al hijo las agencias-->
+<app-agencies-list [agenciesHijo]="agenciesPadre" (reload)="onReload()"></app-agencies-list>
 

@@ -1,5 +1,11 @@
 <nav>
   <a role="button"
-    routerLink="trip/new">Add a new Trip</a>
+     routerLink="trip/new">
+        Add a new Trip
+  </a>
 </nav>
-<app-trips-list></app-trips-list>
+<!-- app-trips-list [tripsHijo]="tripsPadre"  Aqui indicamos que el trips lo enviamos del hijo"[trips]" al padre-->
+<!-- (reloading)="onReload()" Aqui indicamos que el hijo dispara el evento reload que hara ejecutarse onReload en el padre-->
+<app-trips-list [tripsHijo]="tripsPadre"
+                (reload)="onReload()">
+</app-trips-list>
