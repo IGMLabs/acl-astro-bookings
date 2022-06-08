@@ -7,11 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  public title = 'Astro Bookings';
-  public subtitle = 'Bienvenid@!!';
-  public author = 'Alejandro Calvo';
-  public authorUrl = 'https://www.google.com';
-
 
 public reloading = false;
 

@@ -13,7 +13,7 @@ export class RegisterForm implements OnInit {
 
   public form: FormGroup;
 
-  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, public fms: FormMessagesService) {
+  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, private fms: FormMessagesService) {
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       email: new FormControl('', [Validators.required, Validators.email]),

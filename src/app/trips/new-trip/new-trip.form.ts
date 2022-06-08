@@ -39,7 +39,7 @@ export class NewTripForm implements OnInit {
     },
   ];
 
-  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, public fms: FormMessagesService, public cs: CommonService) {
+  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, private fms: FormMessagesService, private cs: CommonService) {
     this.form = formBuilder.group({
       agency: new FormControl('', [Validators.required]),
       destination: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),

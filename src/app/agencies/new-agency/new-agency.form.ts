@@ -30,7 +30,7 @@ export class NewAgencyForm implements OnInit {
   public statuses = ['Active', 'Pending'];
 
 
-  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, public fms: FormMessagesService, public cs: CommonService) {
+  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, private fms: FormMessagesService, private cs: CommonService) {
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       range: new FormControl('', [Validators.required]),
