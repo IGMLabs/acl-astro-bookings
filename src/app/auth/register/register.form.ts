@@ -2,18 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup,  Validators } from '@angular/forms';
 import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
 import { FormValidationsService } from 'src/app/core/services/forms/form-validations.service';
+import { FormBase } from 'src/app/core/services/forms/form.base';
 
 @Component({
   selector: 'app-register-form',
   templateUrl: './register.form.html',
   styleUrls: ['./register.form.css']
 })
-export class RegisterForm implements OnInit {
+export class RegisterForm extends FormBase implements OnInit {
 
+  constructor(
+              formBuilder: FormBuilder,
+              private fvs: FormValidationsService,
+              fms: FormMessagesService
+              ) {
 
-  public form: FormGroup;
+    // Form base
+    super(fms);
 
-  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, private fms: FormMessagesService) {
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -25,21 +31,6 @@ export class RegisterForm implements OnInit {
     });
   }
 
-  public hasError(controlName: string):boolean {
-    return this.fms.hasError(this.form, controlName);
-  }
-
-  public mustShowMessage(controlName: string): boolean {
-    return this.fms.mustShowMessage(this.form, controlName);
-  }
-
-  public getErrorMessage(controlName: string): string {
-    return this.fms.getErrorMessage(this.form, controlName);
-  }
-
-  public getPasswordMatchMessage() {
-    return this.fms.getPasswordMatchMessage(this.form);
-  }
 
   public onSave() {
     const {name, email, password} = this.form.value;

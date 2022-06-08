@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
 import { FormValidationsService } from 'src/app/core/services/forms/form-validations.service';
+import { FormBase } from 'src/app/core/services/forms/form.base';
 import { CommonService } from '../../core/services/common/common.service';
 
 @Component({
@@ -14,10 +15,10 @@ import { CommonService } from '../../core/services/common/common.service';
   templateUrl: './new-trip.form.html',
   styleUrls: ['./new-trip.form.css']
 })
-export class NewTripForm implements OnInit {
+export class NewTripForm extends FormBase implements OnInit {
 
   public start_date = 0;
-  public form: FormGroup;
+
   public agencies = [
     {
       id: 'space-y',
@@ -39,7 +40,16 @@ export class NewTripForm implements OnInit {
     },
   ];
 
-  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, private fms: FormMessagesService, private cs: CommonService) {
+  constructor(
+              formBuilder: FormBuilder,
+              private fvs: FormValidationsService,
+              fms: FormMessagesService,
+              private cs: CommonService
+              ) {
+
+    // Form base
+    super(fms);
+
     this.form = formBuilder.group({
       agency: new FormControl('', [Validators.required]),
       destination: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
@@ -51,22 +61,6 @@ export class NewTripForm implements OnInit {
     }, {
       validators: [fvs.compareDates]
     });
-  }
-
-  public getDatesMessage() {
-    return this.fms.getDatesMessage(this.form);
-  }
-
-  public hasError(controlName: string): boolean {
-    return this.fms.hasError(this.form, controlName);
-  }
-
-  public mustShowMessage(controlName: string): boolean {
-    return this.fms.mustShowMessage(this.form, controlName);
-  }
-
-  public getErrorMessage(controlName: string): string {
-    return this.fms.getErrorMessage(this.form, controlName);
   }
 
   public onSubmitClick() {

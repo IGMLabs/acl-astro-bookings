@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
-  FormGroup,
   Validators,
 } from '@angular/forms';
+import { IdName } from 'src/app/core/api/id-name.interface';
 import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
 import { FormValidationsService } from 'src/app/core/services/forms/form-validations.service';
+import { FormBase } from 'src/app/core/services/forms/form.base';
 import { CommonService } from '../../core/services/common/common.service';
 
 @Component({
@@ -15,9 +15,9 @@ import { CommonService } from '../../core/services/common/common.service';
   templateUrl: './new-agency.form.html',
   styleUrls: ['./new-agency.form.css'],
 })
-export class NewAgencyForm implements OnInit {
-  public form: FormGroup;
-  public ranges = [
+export class NewAgencyForm extends FormBase implements OnInit {
+  // public form: FormGroup;
+  public ranges: IdName[] = [
     { id: 'Orbital', name: '🌎 Orbiting around the earth' },
     {
       id: 'Interplanetary',
@@ -30,27 +30,21 @@ export class NewAgencyForm implements OnInit {
   public statuses = ['Active', 'Pending'];
 
 
-  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, private fms: FormMessagesService, private cs: CommonService) {
+  constructor(
+              formBuilder: FormBuilder,
+              private fvs: FormValidationsService,
+              fms: FormMessagesService,
+              private cs: CommonService
+              ) {
+
+    //Form base
+    super(fms);
+
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       range: new FormControl('', [Validators.required]),
       status: new FormControl(this.statuses[0]),
     });
-  }
-
-
-  public hasError(controlName: string): boolean {
-    return this.fms.hasError(this.form, controlName);
-  }
-
-
-  public mustShowMessage(controlName: string): boolean {
-    return this.fms.mustShowMessage(this.form, controlName);
-  }
-
-
-  public getErrorMessage(controlName: string): string {
-    return this.fms.getErrorMessage(this.form, controlName);
   }
 
 
