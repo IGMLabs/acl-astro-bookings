@@ -6,7 +6,7 @@
            name="name"
            formControlName="name"
            placeholder="Your name"
-           [attr.aria-invalid]="hasErrors('name')">
+           [attr.aria-invalid]="hasError('name')">
     <small *ngIf="mustShowMessage('name')">{{ getErrorMessage('name') }}</small>
   </div>
 
@@ -17,7 +17,7 @@
            name="email"
            formControlName="email"
            placeholder="Your email"
-           [attr.aria-invalid]="hasErrors('email')">
+           [attr.aria-invalid]="hasError('email')">
     <small *ngIf="mustShowMessage('email')">{{ getErrorMessage('email') }}</small>
   </div>
 
@@ -27,7 +27,7 @@
               name="message"
               formControlName="message"
               placeholder="Your message"
-              [attr.aria-invalid]="hasErrors('message')"></textarea>
+              [attr.aria-invalid]="hasError('message')"></textarea>
     <small *ngIf="mustShowMessage('message')">{{ getErrorMessage('message') }}</small>
   </div>
 
