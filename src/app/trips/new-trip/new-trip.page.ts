@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AgenciesApi } from 'src/app/core/api/agencies.api';
 import { Agency } from 'src/app/core/api/agency.interface';
 import { Trip } from 'src/app/core/api/trip.interface';
@@ -12,17 +13,14 @@ import { TripsApi } from 'src/app/core/api/trips.api';
 })
 export class NewTripPage implements OnInit {
 
-  public agencies: Agency[] = [];
+  public agencies$: Observable<Agency[]>;
 
   constructor(private tripsApi: TripsApi, private agenciesApi: AgenciesApi, private router: Router) {
-
-    agenciesApi.getAll$().subscribe( (data) => {
-      this.agencies = data;
-    })
+    this.agencies$ = agenciesApi.getAll$();
   }
 
   onSubmitClick(newTripData:Trip) {
-    this.tripsApi.post(newTripData);
+    this.tripsApi.post$(newTripData);
   }
 
   ngOnInit(): void {

@@ -18,10 +18,6 @@ export class TripsPage implements OnInit {
     this.trips$ = this.tripsApi.getAll$();
   }
 
-  // onReload(){
-  //   this.trips$ = this.tripsApi.getAll$()
-  //   this.error= true;
-  // }
 
   onReload(){
     this.tripsApi.getAll$().subscribe(

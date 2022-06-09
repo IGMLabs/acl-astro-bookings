@@ -6,7 +6,7 @@
         <select name="agency"
                 formControlName="agency">
           <option value="">Select an agency</option>
-          <option *ngFor="let agency of agencies"
+          <option *ngFor="let agency of agenciesHijo"
                   [value]="agency.id">{{ agency.name }}</option>
         </select>
         <small *ngIf="mustShowMessage('agency')">{{ getErrorMessage('agency') }}</small>
