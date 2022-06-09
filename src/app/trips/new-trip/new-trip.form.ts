@@ -32,9 +32,10 @@ export class NewTripForm extends FormBase implements OnInit {
     // Form base
     super(fms);
 
-    agenciesApi.getAll$().subscribe( (data) => {
-      this.agenciesHijo = data;
-    })
+    // Al comentarlo, dejar de rellenar
+    // agenciesApi.getAll$().subscribe( (data) => {
+    //   this.agenciesHijo = data;
+    // })
 
     this.form = formBuilder.group({
       agency: new FormControl('', [Validators.required]),

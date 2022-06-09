@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewTripForm } from './new-trip.form';
+import { NewTripPage } from './new-trip.page';
 
-const routes: Routes = [{ path: '', component: NewTripForm }];
+// Ojo, el componente que tenemos que indicar seria el page.
+const routes: Routes = [{ path: '', component: NewTripPage }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

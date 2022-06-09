@@ -81,6 +81,15 @@
       "status": "Waiting",
       "extraLuggagePricePerKilo": 0,
       "premiumFoodPrice": 1000
+    },
+    {
+      "id": "space-y-mallorca",
+      "agency": "space-y",
+      "destination": "mallorca",
+      "places": 4,
+      "start_date": "2022-06-20",
+      "end_date": "2022-06-26",
+      "flightPrice": 10000000
     }
   ]
 }
