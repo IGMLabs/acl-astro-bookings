@@ -16,7 +16,7 @@ export class NewTripPage implements OnInit {
 
   constructor(private tripsApi: TripsApi, private agenciesApi: AgenciesApi, private router: Router) {
 
-    agenciesApi.getAll().subscribe( (data) => {
+    agenciesApi.getAll$().subscribe( (data) => {
       this.agencies = data;
     })
   }

@@ -34,7 +34,7 @@ export class NewTripForm extends FormBase implements OnInit {
     // Form base
     super(fms);
 
-    agenciesApi.getAll().subscribe( (data) => {
+    agenciesApi.getAll$().subscribe( (data) => {
       this.agencies = data;
     })
 

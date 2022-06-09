@@ -3,6 +3,18 @@
       routerLink="agency/new">Add a new Agency</a>
 </nav>
 <!-- Le paso al hijo las agencias-->
-<app-agencies-list [agenciesHijo]="agenciesPadre"
-                   (reload)="onReload()"></app-agencies-list>
+<app-agencies-list *ngIf="(agencies$ | async) as agenciesPadre ; else waiting"
+                   [agenciesHijo]="agenciesPadre"
+                   (reload)="onReload()">
+</app-agencies-list>
 
+
+<!-- <app-agencies-list *ngIf="agenciesPadre ; else waiting"
+                   [agenciesHijo]="agenciesPadre"
+                   (reload)="onReload()">
+</app-agencies-list> -->
+
+<ng-template #waiting>
+  <h4>Waiting...</h4>
+</ng-template>
+<h4 *ngIf="error">Ha habido un error</h4>

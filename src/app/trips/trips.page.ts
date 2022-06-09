@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Trip } from '../core/api/trip.interface';
 import { TripsApi } from '../core/api/trips.api';
 
@@ -9,15 +10,31 @@ import { TripsApi } from '../core/api/trips.api';
 })
 export class TripsPage implements OnInit {
 
-  public tripsPadre!: Trip[];
+  //public tripsPadre!: Trip[];
+  public trips$!: Observable<Trip[]>;
+  public error: boolean = false;
 
   constructor( private tripsApi: TripsApi ) {
-    this.tripsPadre = tripsApi.getAll();
+    this.trips$ = this.tripsApi.getAll$();
   }
 
+  // onReload(){
+  //   this.trips$ = this.tripsApi.getAll$()
+  //   this.error= true;
+  // }
+
   onReload(){
-    this.tripsPadre = this.tripsApi.getAll()
+    this.tripsApi.getAll$().subscribe(
+         ( data ) => {
+           // this.agenciesPadre = data;
+    },
+         ( err )  => {
+            console.log('hay un fallo', err.message);
+            this.error = true;
   }
+    );
+  }
+
 
   ngOnInit(): void {
   }
