@@ -3,7 +3,7 @@
   <ul>
     <li *ngFor="let trip of tripsHijo">
       <a [routerLink]="['/','trips','trip', trip.id]"
-         [ngClass]="getClassForStatus(trip.status)">{{ trip.id }}</a>
+         [ngClass]="getClassForStatus(trip.status || '')">{{ trip.id }}</a>
       <!-- <span>{{ trip.agencyId }}</span>
       <span>{{ trip.agencyTripCode }}</span>
       <span>{{ trip.destination }}</span>
@@ -17,7 +17,7 @@
       </ng-container>
       <ng-template #withStay>📍</ng-template>
       <ng-template #tripOnly>🎢</ng-template>
-      <span [ngClass]="trip.status| lowercase">{{ trip.status }}</span>
+      <span [ngClass]="trip.status|| '' | lowercase">{{ trip.status }}</span>
       <span>{{ trip.extraLuggagePricePerKilo }}</span>
       <span>{{ trip.premiumFoodPrice }}</span>
     </li>

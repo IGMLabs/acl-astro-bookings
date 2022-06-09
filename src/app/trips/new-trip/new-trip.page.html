@@ -1,4 +1,4 @@
-<app-new-trip-form *ngIf="(agencies$ | async) as agenciesPadre$"
-                   [agenciesHijo]="agenciesPadre$"
-                   (save)="onSubmitClick($event)">
+<app-new-trip-form *ngIf="(agencies$ | async) as agenciesPadre"
+                   [agenciesHijo]="agenciesPadre"
+                   (save)="onSubmitSave($event)">
 </app-new-trip-form>

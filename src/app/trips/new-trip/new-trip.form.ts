@@ -1,15 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+
 import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
 import { FormValidationsService } from 'src/app/core/services/forms/form-validations.service';
 import { FormBase } from 'src/app/core/services/forms/form.base';
 import { CommonService } from '../../core/services/common/common.service';
 import { AgenciesApi } from '../../core/api/agencies.api';
 import { Agency } from 'src/app/core/api/agency.interface';
+import { Trip } from 'src/app/core/api/trip.interface';
 
 @Component({
   selector: 'app-new-trip-form',
@@ -21,7 +19,7 @@ export class NewTripForm extends FormBase implements OnInit {
   // public start_date = 0;
 
   @Input() public agenciesHijo: Agency[] = [] ;
-  @Output() public save = new EventEmitter();
+  @Output() public save = new EventEmitter<Trip>();
 
   constructor(
               formBuilder: FormBuilder,
@@ -55,8 +53,9 @@ export class NewTripForm extends FormBase implements OnInit {
     const { agency, destination, places, start_date, end_date, flightPrice } = this.form.value;
     const id = this.cs.getDashId(agency + "-" + destination);
     const newTripData = { id, agency, destination, places, start_date, end_date, flightPrice };
-    console.warn('Send trip data ', newTripData)
+
     this.save.emit(newTripData);
+    console.log('Estamos Jodidos!',newTripData);
   }
 
   ngOnInit(): void { }

@@ -15,12 +15,17 @@ export class NewTripPage implements OnInit {
 
   public agencies$: Observable<Agency[]>;
 
-  constructor(private tripsApi: TripsApi, private agenciesApi: AgenciesApi, private router: Router) {
+  constructor(private tripsApi: TripsApi, agenciesApi: AgenciesApi, private router: Router) {
+
     this.agencies$ = agenciesApi.getAll$();
   }
 
-  onSubmitClick(newTripData:Trip) {
-    this.tripsApi.post$(newTripData);
+  onSubmitSave(newTripData:Trip) {
+    // Para que haga un post de verdad hay que meterle el .subscribe()
+    console.log('Estamos onFire!'+newTripData);
+    this.tripsApi.post$(newTripData).subscribe(()=> {
+      this.router.navigate(['/trips']);
+    });
   }
 
   ngOnInit(): void {
