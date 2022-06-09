@@ -19,18 +19,6 @@
       "name": "Virgin Way",
       "range": "Orbital",
       "status": "Pending"
-    },
-    {
-      "id": "ieee",
-      "name": "ieee",
-      "range": "Interplanetary",
-      "status": "Active"
-    },
-    {
-      "id": "prueba",
-      "name": "prueba",
-      "range": "Orbital",
-      "status": "Active"
     }
   ],
   "trips": [

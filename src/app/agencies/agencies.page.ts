@@ -9,16 +9,20 @@ import { Agency } from '../core/api/agency.interface';
   styleUrls: ['./agencies.page.css']
 })
 export class AgenciesPage implements OnInit {
+
 public agenciesPadre!: Agency[];
 
 constructor( private agenciesApi: AgenciesApi ) {
-  this.agenciesPadre = agenciesApi.getAll();
+  agenciesApi.getAll().subscribe( ( data ) => {
+    this.agenciesPadre = data;
+  } );
 }
 
 onReload(){
-  this.agenciesPadre = this.agenciesApi.getAll();
+  this.agenciesApi.getAll().subscribe( ( data ) => {
+    this.agenciesPadre = data;
+  } );
 }
-
 
   ngOnInit(): void {
   }

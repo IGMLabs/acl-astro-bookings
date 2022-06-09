@@ -12,11 +12,13 @@ import { TripsApi } from 'src/app/core/api/trips.api';
 })
 export class NewTripPage implements OnInit {
 
-  public agencies: Agency[] ;
+  public agencies: Agency[] = [];
 
   constructor(private tripsApi: TripsApi, private agenciesApi: AgenciesApi, private router: Router) {
 
-    this.agencies = agenciesApi.getAll();
+    agenciesApi.getAll().subscribe( (data) => {
+      this.agencies = data;
+    })
   }
 
   onSubmitClick(newTripData:Trip) {

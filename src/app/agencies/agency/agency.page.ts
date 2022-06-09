@@ -14,9 +14,11 @@ export class AgencyPage implements OnInit {
   public agency?: Agency;
 
   constructor( route:ActivatedRoute, agenciesApi: AgenciesApi ) {
-    this.agencyId = route.snapshot.paramMap.get('id')!;
+    this.agencyId = route.snapshot.paramMap.get('id') || '';
     //this.agencyId = route.snapshot.paramMap.get('id') || '';  OPCION 2
-    this.agency = agenciesApi.getById(this.agencyId);
+   agenciesApi.getById(this.agencyId).subscribe( (data) => {
+     this.agency = data;
+   });
    }
 
   ngOnInit(): void {

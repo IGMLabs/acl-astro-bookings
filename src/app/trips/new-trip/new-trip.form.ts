@@ -20,7 +20,7 @@ export class NewTripForm extends FormBase implements OnInit {
 
   // public start_date = 0;
 
-  @Input() public agencies: Agency[] ;
+  @Input() public agencies: Agency[] = [] ;
   @Output() public save = new EventEmitter();
 
   constructor(
@@ -34,7 +34,9 @@ export class NewTripForm extends FormBase implements OnInit {
     // Form base
     super(fms);
 
-    this.agencies = agenciesApi.getAll();
+    agenciesApi.getAll().subscribe( (data) => {
+      this.agencies = data;
+    })
 
     this.form = formBuilder.group({
       agency: new FormControl('', [Validators.required]),

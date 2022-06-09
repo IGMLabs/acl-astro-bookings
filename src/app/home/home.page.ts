@@ -24,7 +24,9 @@ public reload(lista: string) {
 
   constructor( tripsApi:TripsApi, agenciesApi:AgenciesApi ) {
       this.tripsPadre = tripsApi.getAll();
-      this.agenciesPadre = agenciesApi.getAll();
+      agenciesApi.getAll().subscribe( (data) => {
+        this.agenciesPadre = data;
+      })
 
    }
 
