@@ -56,7 +56,7 @@ export class NewTripForm extends FormBase implements OnInit {
     const newTripData = { id, agency, destination, places, start_date, end_date, flightPrice };
 
     this.save.emit(newTripData);
-    console.log('Estamos Jodidos!',newTripData);
+
   }
 
   ngOnInit(): void { }

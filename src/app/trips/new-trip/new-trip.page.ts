@@ -22,7 +22,7 @@ export class NewTripPage implements OnInit {
 
   onSubmitSave(newTripData:Trip) {
     // Para que haga un post de verdad hay que meterle el .subscribe()
-    console.log('Estamos onFire!'+newTripData);
+
     this.tripsApi.post$(newTripData).subscribe(()=> {
       this.router.navigate(['/trips']);
     });
