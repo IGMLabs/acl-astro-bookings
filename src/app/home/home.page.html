@@ -1,4 +1,8 @@
-<app-agencies-list [agenciesHijo]="agenciesPadre" ></app-agencies-list>
-<app-trips-list [tripsHijo]="tripsPadre"></app-trips-list>
+<ng-container>
+  <app-agencies-list *ngIf="agenciesPadre" [agenciesHijo]="agenciesPadre">
+  </app-agencies-list>
+</ng-container>
+<ng-template #waiting> <h4> Waiting.. </h4></ng-template>
 
-<app-reloading *ngIf="reloading"></app-reloading>
+<app-trips-list *ngIf="tripsPadre" [tripsHijo]="tripsPadre"> </app-trips-list>
+

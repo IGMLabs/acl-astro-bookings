@@ -1,30 +1,14 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { CrudApi } from './crud.api';
+import { StatusStore } from './status.store';
+import { Trip } from './trip.interface';
 
-import { Trip } from "./trip.interface";
-import { Observable } from 'rxjs';
-
-@Injectable(
-  {
-    providedIn: 'root'
-  }
-)
-export class TripsApi {
-
-  constructor( private http: HttpClient ) {
-
-  }
-
-  public getAll$(): Observable<Trip[]> {
-    return this.http.get<Trip[]>('http://localhost:3000/trips');
-  }
-
-  public getById$(id: string) : Observable<Trip> {
-    return this.http.get<Trip>('http://localhost:3000/trips/'+ id);
-  }
-
-  public post$( trip: Trip ){
-    return this.http.post('http://localhost:3000/trips', trip);
-
+@Injectable({
+  providedIn: 'root',
+})
+export class TripsApi extends CrudApi<Trip> {
+  constructor(http: HttpClient, statusStore: StatusStore) {
+    super(http, 'tripps', statusStore);
   }
 }

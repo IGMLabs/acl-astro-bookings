@@ -3,6 +3,7 @@
       routerLink="agency/new">Add a new Agency</a>
 </nav>
 <!-- Le paso al hijo las agencias-->
+<!-- con el as, creamos una nueva variable(agenciesPadre)-->
 <app-agencies-list *ngIf="(agencies$ | async) as agenciesPadre ; else waiting"
                    [agenciesHijo]="agenciesPadre"
                    (reload)="onReload()">

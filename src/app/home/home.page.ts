@@ -23,6 +23,7 @@ public reload(lista: string) {
 }
 
   constructor( tripsApi:TripsApi, agenciesApi:AgenciesApi ) {
+
       tripsApi.getAll$().subscribe( (data) => {
         this.tripsPadre = data;
       });
