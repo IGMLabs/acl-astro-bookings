@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
 import { ApiStatus } from './api-status.interface';
 
@@ -11,7 +12,7 @@ export class StatusStore {
     errorMessage: '',
   };
 
-  // El subject es el productor y emisor
+  // El BehaviorSubject es el productor y emisor , almacenando el último estado.
   private state$: BehaviorSubject<ApiStatus> = new BehaviorSubject(
     this.initialState
     );
@@ -21,7 +22,7 @@ export class StatusStore {
     this.state$.next(this.initialState);
   }
 
-  
+
   public getState$(){
     return this.state$.asObservable();
   }
@@ -52,7 +53,3 @@ export class StatusStore {
 
 //   }
 // }
-
-
-
-

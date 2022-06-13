@@ -5,6 +5,7 @@ import { AgenciesList } from './components/agencies/agencies.list';
 import { TripsList } from './components/trips/trips.list';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookingsList } from './components/bookings/bookings.list';
 
 
 
@@ -12,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ReloadingComponent,
     AgenciesList,
-    TripsList
+    TripsList,
+    BookingsList
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TripsList,
     RouterModule, // Al exportar el router aqui, cualquiera que importe el shared, tendra acceso al routerlink (router module)
     // Al importarlo para usar desde otros hay que exportarlo.
-    ReactiveFormsModule
+    ReactiveFormsModule, BookingsList
   ]
 })
 export class SharedModule { }

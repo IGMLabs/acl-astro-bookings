@@ -23,10 +23,9 @@ export class NewTripForm extends FormBase implements OnInit {
 
   constructor(
               formBuilder: FormBuilder,
-              private fvs: FormValidationsService,
+              fvs: FormValidationsService,
               fms: FormMessagesService,
-              private cs: CommonService,
-              agenciesApi: AgenciesApi,
+              private cs: CommonService
               ) {
 
     // Form base

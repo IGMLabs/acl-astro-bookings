@@ -1,6 +1,31 @@
 {
   "users": [],
-  "bookings": [],
+  "bookings": [
+    {
+      "id": "prueba-reserva",
+      "tripId": "Prueba-Reserva",
+      "passengerName": "TitoJuan",
+      "date": "13/06/2022",
+      "luggageKilos": "5",
+      "hasPremiumFoodPrice": "true"
+    },
+    {
+      "id": "space-y-mallorca-juan",
+      "tripId": "space-y-mallorca",
+      "passengerName": "Juan",
+      "date": "2022-06-13T08:54:41.769Z",
+      "luggageKilos": 5,
+      "hasPremiumFoodPrice": true
+    },
+    {
+      "id": "space-y-mallorca-alex",
+      "tripId": "space-y-mallorca",
+      "passengerName": "Alex",
+      "date": "6/13/2022",
+      "luggageKilos": 5,
+      "hasPremiumFoodPrice": true
+    }
+  ],
   "agencies": [
     {
       "id": "space-y",
