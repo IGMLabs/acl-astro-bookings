@@ -32,12 +32,13 @@ constructor(
     passengerName: new FormControl('', [Validators.required]),
     date: new FormControl(new Date().toLocaleDateString('en-US'), [Validators.required]),
     luggageKilos: new FormControl('', [Validators.required]),
-    hasPremiumFoodPrice: new FormControl(false, [Validators.required]),
+    hasPremiumFoodPrice: new FormControl(false),
 
   });
 }
 
 public onSubmitClick() {
+
   const { tripId, passengerName, date, luggageKilos, hasPremiumFoodPrice } = this.form.value;
   const id = this.cs.getDashId(tripId + "-" + passengerName);
   const newBookingData = { id, tripId,passengerName, date, luggageKilos, hasPremiumFoodPrice };
