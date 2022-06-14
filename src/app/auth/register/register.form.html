@@ -10,7 +10,8 @@
     <small *ngIf="mustShowMessage('name')">{{ getErrorMessage('name') }}</small>
   </div>
 
-  <div>
+  <app-email-control formControlName="email"></app-email-control>
+  <!-- <div>
     <label for="email">Email</label>
     <input type="email"
            id="email"
@@ -19,7 +20,7 @@
            placeholder="Your email"
            [attr.aria-invalid]="hasError('email')">
     <small *ngIf="mustShowMessage('email')">{{ getErrorMessage('email') }}</small>
-  </div>
+  </div> -->
 
   <div>
     <label for="password">Password</label>
