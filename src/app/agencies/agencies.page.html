@@ -2,6 +2,8 @@
     <a role="button"
       routerLink="agency/new">Add a new Agency</a>
 </nav>
+<br>
+<app-search></app-search>
 <!-- Le paso al hijo las agencias-->
 <!-- con el as, creamos una nueva variable(agenciesPadre)-->
 <app-agencies-list *ngIf="(agencies$ | async) as agenciesPadre ; else waiting"
@@ -9,6 +11,7 @@
                    (reload)="onReload()">
 </app-agencies-list>
 <hr>
+
 
 <ng-template #waiting>
   <h4>Waiting...</h4>

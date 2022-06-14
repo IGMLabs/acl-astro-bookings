@@ -1,6 +1,7 @@
 <form [formGroup]="form">
   <div>
     <fieldset>
+
       <div>
         <label for="tripId"> TripId</label>
         <select name="tripId"
@@ -11,32 +12,31 @@
         </select>
         <small *ngIf="mustShowMessage('tripId')">{{ getErrorMessage('tripId') }}</small>
       </div>
-      <div>
-        <label for="passengerName"> PassengerName</label>
-        <input name="passengerName"
-              type="text"
-              formControlName="passengerName"
-              [attr.aria-invalid]="hasError('passengerName')">
-        <small *ngIf="mustShowMessage('passengerName')">{{ getErrorMessage('passengerName') }}</small>
-      </div>
-      <div>
-        <label for="luggageKilos"> Luggage Kilos</label>
-        <input name="luggageKilos"
-              type="number"
-              formControlName="luggageKilos"
-              [attr.aria-invalid]="hasError('luggageKilos')">
-        <small *ngIf="mustShowMessage('luggageKilos')">{{ getErrorMessage('luggageKilos') }}</small>
-      </div>
-      <div>
-        <label for="hasPremiumFoodPrice"> Premium Food Price</label>
-        <input name="hasPremiumFoodPrice"
-              type="checkbox"
-              formControlName="hasPremiumFoodPrice"
-              [attr.aria-invalid]="hasError('hasPremiumFoodPrice')">
-        <small *ngIf="mustShowMessage('hasPremiumFoodPrice')">{{ getErrorMessage('hasPremiumFoodPrice') }}</small>
-      </div>
+
+      <app-template-control [form]="form"
+                            formControlName="passengerName"
+                            label="Passenger Name"
+                            placeholder="Passenger name">
+      </app-template-control>
+
+      <app-template-control [form]="form"
+                            formControlName="luggageKilos"
+                            type="number"
+                            label="Luggage Kilos"
+                            placeholder="Luggage Kilos">
+      </app-template-control>
+
+      <app-template-control [form]="form"
+                            inputType="checkbox"
+                            formControlName="hasPremiumFoodPrice"
+                            label="Premium Food Price">
+      </app-template-control>
+
     </fieldset>
   </div>
+
   <button [disabled]="form.invalid"
-          (click)="onSubmitClick()">Save</button>
+          (click)="onSubmitClick()">
+                Save
+  </button>
 </form>

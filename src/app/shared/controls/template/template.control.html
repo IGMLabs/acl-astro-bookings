@@ -1,0 +1,52 @@
+<div>
+  <label [for]="formControlName">{{ label | uppercase }}</label>
+  <input  *ngIf="inputType!='checkbox' && inputType!='radio' && inputType!='textArea'"
+         [type]="inputType"
+         [id]="formControlName"
+         [name]="formControlName"
+         [value]="value"
+         [placeholder]="placeholder"
+         [attr.aria-invalid]="hasError(formControlName)"
+         (keyup)="onKeyUp($event)"
+         (blur)="touchedCallBack()">
+
+
+  <textarea *ngIf="inputType=='textArea'"
+            [id]="formControlName"
+            [name]="formControlName"
+            [value]="value"
+            [placeholder]="placeholder"
+            [attr.aria-invalid]="hasError('message')"
+            (keyup)="onKeyUp($event)"
+            (blur)="touchedCallBack()">
+  </textarea>
+
+
+  <input  *ngIf="inputType=='checkbox'"
+         [type]="inputType"
+         [id]="formControlName"
+         [name]="formControlName"
+         [value]="value"
+         [placeholder]="placeholder"
+         [attr.aria-invalid]="hasError(formControlName)"
+         (click)="onChecked($event)"
+         (blur)="touchedCallBack()">
+
+
+
+  <input  *ngIf="inputType=='radio'"
+         [type]="inputType"
+         [id]="formControlName"
+         [name]="formControlName"
+         [value]="value"
+         [placeholder]="placeholder"
+         [attr.aria-invalid]="hasError(formControlName)"
+         (blur)="touchedCallBack()">
+
+
+
+  <small *ngIf="mustShowMessage(formControlName)">
+          {{ getErrorMessage(formControlName) }}
+  </small>
+
+</div>

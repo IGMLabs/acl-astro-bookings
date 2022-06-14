@@ -5,7 +5,6 @@ import { FormMessagesService } from 'src/app/core/services/forms/form-messages.s
 import { FormValidationsService } from 'src/app/core/services/forms/form-validations.service';
 import { FormBase } from 'src/app/core/services/forms/form.base';
 import { CommonService } from '../../core/services/common/common.service';
-import { AgenciesApi } from '../../core/api/agencies.api';
 import { Agency } from 'src/app/core/api/agency.interface';
 import { Trip } from 'src/app/core/api/trip.interface';
 
@@ -30,11 +29,6 @@ export class NewTripForm extends FormBase implements OnInit {
 
     // Form base
     super(fms);
-
-    // Al comentarlo, dejar de rellenar
-    // agenciesApi.getAll$().subscribe( (data) => {
-    //   this.agenciesHijo = data;
-    // })
 
     this.form = formBuilder.group({
       agency: new FormControl('', [Validators.required]),

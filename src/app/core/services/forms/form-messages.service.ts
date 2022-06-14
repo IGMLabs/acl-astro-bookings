@@ -15,7 +15,7 @@ export class FormMessagesService {
   }
 
 
-  private getControl(form:FormGroup, controlName: string): AbstractControl | null {
+  public getControl(form:FormGroup, controlName: string): AbstractControl | null {
     return form.get(controlName);
   }
 

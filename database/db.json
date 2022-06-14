@@ -50,6 +50,12 @@
       "name": "asd",
       "range": "Orbital",
       "status": "Active"
+    },
+    {
+      "id": "asdasd",
+      "name": "asdasd",
+      "range": "Interplanetary",
+      "status": null
     }
   ],
   "trips": [

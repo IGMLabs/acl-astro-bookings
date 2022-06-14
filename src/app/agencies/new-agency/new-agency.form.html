@@ -1,14 +1,12 @@
 <form [formGroup]="form">
   <fieldset>
-    <div>
-      <label for="name"> Agency name </label>
-      <input name="name"
-             id="name"
-             type="text"
-             formControlName="name"
-             [attr.aria-invalid]="hasError('name')">
-      <small *ngIf="mustShowMessage('name')">{{ getErrorMessage('name') }}</small>
-    </div>
+
+    <app-template-control [form]="form"
+                          formControlName="name"
+                          label="Agency Name"
+                          placeholder="Your agency name">
+    </app-template-control>
+
     <div>
       <label for="range"> Operation range </label>
       <select name="range"
@@ -22,23 +20,24 @@
       </select>
       <small *ngIf="mustShowMessage('range')">{{ getErrorMessage('range') }}</small>
     </div>
-    <div>
-      <label for="status"> Operative status </label>
-      <ng-container *ngFor="let status of statuses">
-        <label for="status-{{status}}">
-          <input name="status"
-                 type="radio"
-                 id="status-{{status}}"
-                 formControlName="status"
-                 [value]="status">
-          {{ status }}
-        </label>
-      </ng-container>
-    </div>
+
+    <label for="status"> Status </label>
+    <app-template-control *ngFor="let status of statuses"
+                          [form]="form"
+                          formControlName="status"
+                          inputType="radio"
+                          [label]="status">
+    </app-template-control>
+
   </fieldset>
+
+
   <div>
     <button type="submit"
             (click)="onSubmitClick()"
-            [disabled]="form.invalid"> Send new agency data </button>
+            [disabled]="form.invalid">
+              Send new agency data
+    </button>
   </div>
+
 </form>

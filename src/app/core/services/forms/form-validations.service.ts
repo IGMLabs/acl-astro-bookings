@@ -29,6 +29,24 @@ export class FormValidationsService {
 
 
 
+  // public compareDates(form: AbstractControl): ValidationErrors | null {
+  //   const dateForm = form.get('start_date');
+  //   const dateTo = form.get('end_date');
+  //   console.log('hola');
+  //   if (!dateForm || !dateTo) {
+  //     return {
+  //       compareDates: 'Dates dont exist',
+  //     };
+  //   }
+  //   if (dateForm.value > dateTo.value) {
+  //     return {
+  //       compareDates: 'Dates wrong',
+  //     };
+  //   }
+  //   return null;
+  // }
+
+
   public compareDates(form: AbstractControl) : ValidationErrors | null {
     const start = form.get('start_date')?.value;
     const end = form.get('end_date')?.value;
@@ -37,22 +55,22 @@ export class FormValidationsService {
         compareDates: 'No dates provided'
       };
     }
-    const start_date = new Date(start);
-    const end_date = new Date(end);
+    const startDate = new Date(start);
+    const endDate = new Date(end);
     const today = new Date();
 
-    if (today > start_date){
+    if (today > startDate){
       return {
         compareDates: "You can't travel to the past"
       };
     }
-    if (end_date < start_date){
+    if (endDate < startDate){
       return {
         compareDates: "Travel to the past it's not posible yet"
       };
     }
-
     return null;
   }
+
 }
 

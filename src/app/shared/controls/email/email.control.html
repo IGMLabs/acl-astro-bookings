@@ -7,5 +7,7 @@
          placeholder="Your email"
          [attr.aria-invalid]="hasError('email')"
          (blur)="touchedCallBack()">
+
+
   <small *ngIf="mustShowMessage('email')">{{ getErrorMessage('email') }}</small>
 </div>
