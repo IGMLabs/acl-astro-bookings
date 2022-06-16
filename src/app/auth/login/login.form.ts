@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Login } from 'src/app/core/api/login.interface';
 
 import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
 import { FormBase } from 'src/app/core/services/forms/form.base';
@@ -11,6 +12,7 @@ import { FormBase } from 'src/app/core/services/forms/form.base';
 })
 export class LoginForm extends FormBase implements OnInit {
 
+  @Output() public save = new EventEmitter<Login>();
 
   constructor(
               formBuilder: FormBuilder,
@@ -30,8 +32,9 @@ export class LoginForm extends FormBase implements OnInit {
 
   public onSave() {
     const {email, password} = this.form.value;
-    const login = {email, password};
+    const login = {email:email.email, password };
     console.warn('Send Login', login);
+    this.save.emit(login);
   }
 
 

@@ -14,6 +14,7 @@ import { Register } from '../../core/api/register.interface';
 export class RegisterForm extends FormBase implements OnInit {
 
   @Output() public save = new EventEmitter<Register>();
+
   constructor(formBuilder: FormBuilder, fvs: FormValidationsService, fms: FormMessagesService, private aa: AuthApi) {
     super(fms)
     this.form = formBuilder.group({
