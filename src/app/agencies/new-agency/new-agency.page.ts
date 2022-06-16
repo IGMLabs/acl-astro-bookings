@@ -23,8 +23,12 @@ export class NewAgencyPage implements OnInit {
   }
 
   onSave(newAgencyData:Agency) {
-    this.agenciesApi.post$(newAgencyData).subscribe(()=> {
-      this.router.navigate(['/agencies']);
+    this.agenciesApi.post$(newAgencyData).subscribe((response)=> {
+
+      if(response.ok!==false){
+        console.log(response);
+        this.router.navigate(['/agencies']);
+      }
     });
   }
 

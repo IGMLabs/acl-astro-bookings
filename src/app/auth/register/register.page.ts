@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs';
 import { Register } from 'src/app/core/api/register.interface';
 import { AuthApi } from '../auth.api';
 
@@ -17,5 +18,12 @@ export class RegisterPage implements OnInit {
 
   onSave(newRegister: Register){
     this.aa.postRegister$(newRegister).subscribe();
+  }
+
+  onRegister(register: Register) {
+    this.aa
+      .postRegister$(register)
+      .pipe(tap((response) => console.warn(response)))
+      .subscribe();
   }
 }

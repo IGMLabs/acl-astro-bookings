@@ -4,7 +4,9 @@ import { HeaderComponent } from './header/header.component';
 import { TitleComponent } from './title/title.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './api/error.interceptor';
+import { AuthInterceptor } from '../auth/api/auth.interceptor';
 
 
 
@@ -23,6 +25,12 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     TitleComponent,
     FooterComponent
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ]
 })
 export class CoreModule { }
+
+
