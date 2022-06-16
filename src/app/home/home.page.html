@@ -1,11 +1,15 @@
 <ng-container>
-  <app-agencies-list *ngIf="agenciesPadre" [agenciesHijo]="agenciesPadre">
+  <app-agencies-list *ngIf="(agenciesPadre$ |async) as agenciesPadre"
+                     [agenciesHijo]="agenciesPadre">
   </app-agencies-list>
 </ng-container>
 <ng-template #waiting> <h4> Waiting.. </h4></ng-template>
 
-<app-trips-list *ngIf="tripsPadre" [tripsHijo]="tripsPadre"> </app-trips-list>
+<app-trips-list *ngIf="(tripsPadre$ | async )as tripsPadre"
+                [tripsHijo]="tripsPadre"> </app-trips-list>
 
 
+<app-bookings-list *ngIf="(bookingsPadre$ | async )as bookingsPadre"
+                   [bookingsHijo]="bookingsPadre"></app-bookings-list>
 
-<app-bookings-list *ngIf="bookingsPadre" [bookingsHijo]="bookingsPadre"></app-bookings-list>
+<app-reloading *ngIf="reloading"></app-reloading>

@@ -1,19 +1,19 @@
 <nav>
-    <a role="button"
-      routerLink="agency/new">Add a new Agency</a>
+  <a role="button"
+     routerLink="agency/new">✨ Add a new agency</a>
 </nav>
 <br>
-<app-search></app-search>
-<!-- Le paso al hijo las agencias-->
-<!-- con el as, creamos una nueva variable(agenciesPadre)-->
-<app-agencies-list *ngIf="(agencies$ | async) as agenciesPadre ; else waiting"
+<app-search (search)="onSearch($event)"></app-search>
+
+<app-agencies-list *ngIf="(agencies$ | async) as agenciesPadre ; else waiting "
                    [agenciesHijo]="agenciesPadre"
                    (reload)="onReload()">
 </app-agencies-list>
-<hr>
 
+<app-trips-list *ngIf="(trips$ | async) as trips"
+                [tripsHijo]="trips">
+</app-trips-list>
 
 <ng-template #waiting>
   <h4>Waiting...</h4>
 </ng-template>
-<h4 *ngIf="error">Ha habido un error</h4>

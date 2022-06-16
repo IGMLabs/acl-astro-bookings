@@ -1,28 +1,29 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FormMessagesService } from '../../../core/services/forms/form-messages.service';
+import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
 
 @Component({
-  selector: 'app-template-control',
-  templateUrl: './template.control.html',
-  styleUrls: ['./template.control.css'],
+  selector: 'app-select-template-control',
+  templateUrl: './select-template.control.html',
+  styleUrls: ['./select-template.control.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TemplateControl),
-      multi: true,
+      useExisting: forwardRef(() => SelectTemplateControl),
+      multi: true, // Para poder usar el mismo token en varios sitios(NG_VALUE_ACCESSOR)
     },
   ],
 })
-export class TemplateControl
+export class SelectTemplateControl
        implements OnInit, ControlValueAccessor {
 
   @Input() public form!: FormGroup ;
   @Input() public formControlName: string = '';
-  @Input() public inputType: string = 'text';
-  @Input() public label: string = 'Enter data';
+  @Input() public inputType: string = 'radio';
   @Input() public placeholder: string = '...';
+  @Input() public label!: string[] ;
 
+  // public label!: string[] ;
 
   public touchedCallBack : any;
   public changeCallBack : any;
@@ -52,35 +53,6 @@ export class TemplateControl
   }
 
 
-  public onKeyUp(event: any){
-    const controlValue = event.target.value;
-    this.value = controlValue;
-    this.changeCallBack(this.value);
-    this.touchedCallBack();
-  }
-
-
-  public onChecked(event: any){
-    const controlValue = event.target.value;
-    const controlChecked = event.target.checked;
-
-    this.value = controlValue;
-    this.changeCallBack(controlChecked);
-    this.touchedCallBack();
-  }
-
-
-  // Select o radiobutton??
-  // public onSelected(event: any){
-  //   const controlValue = event.target.value;
-  //   const controlSelected = event.target.selected;
-
-  //   this.value = controlValue;
-  //   this.changeCallBack(controlSelected);
-  //   this.touchedCallBack();
-  // }
-
-
   writeValue(value: any): void {
     this.value = value;
   }
@@ -94,6 +66,37 @@ export class TemplateControl
   registerOnTouched(touchedCallBack: any): void {
     this.touchedCallBack = touchedCallBack;
   }
+
+
+  public radioSelected(event: any){
+    const controlValue    = event.target.value;
+    const controlSelected = event.target.selected;
+
+    this.value = controlValue;
+    this.changeCallBack(controlSelected);
+    this.touchedCallBack();
+  }
+
+
+  // public onChecked(event: any){
+  //   const controlValue = event.target.value;
+  //   const controlChecked = event.target.checked;
+
+  //   this.value = controlValue;
+  //   this.changeCallBack(controlChecked);
+  //   this.touchedCallBack();
+  // }
+
+
+  // Select o radiobutton??
+  // public onSelected(event: any){
+  //   const controlValue = event.target.value;
+  //   const controlSelected = event.target.selected;
+
+  //   this.value = controlValue;
+  //   this.changeCallBack(controlSelected);
+  //   this.touchedCallBack();
+  // }
 
 
   ngOnInit(): void {

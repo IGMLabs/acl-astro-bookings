@@ -2,14 +2,6 @@
   "users": [],
   "bookings": [
     {
-      "id": "prueba-reserva",
-      "tripId": "Prueba-Reserva",
-      "passengerName": "TitoJuan",
-      "date": "13/06/2022",
-      "luggageKilos": "5",
-      "hasPremiumFoodPrice": "true"
-    },
-    {
       "id": "space-y-mallorca-juan",
       "tripId": "space-y-mallorca",
       "passengerName": "Juan",
@@ -23,6 +15,14 @@
       "passengerName": "Alex",
       "date": "6/13/2022",
       "luggageKilos": 5,
+      "hasPremiumFoodPrice": true
+    },
+    {
+      "id": "space-y-alex2.0",
+      "tripId": "space-y",
+      "passengerName": "alex2.0",
+      "date": "6/15/2022",
+      "luggageKilos": "5",
       "hasPremiumFoodPrice": true
     }
   ],
@@ -44,18 +44,6 @@
       "name": "Virgin Way",
       "range": "Orbital",
       "status": "Pending"
-    },
-    {
-      "id": "asd",
-      "name": "asd",
-      "range": "Orbital",
-      "status": "Active"
-    },
-    {
-      "id": "asdasd",
-      "name": "asdasd",
-      "range": "Interplanetary",
-      "status": null
     }
   ],
   "trips": [

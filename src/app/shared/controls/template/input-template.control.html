@@ -1,6 +1,6 @@
 <div>
   <label [for]="formControlName">{{ label | uppercase }}</label>
-  <input  *ngIf="inputType!='checkbox' && inputType!='radio' && inputType!='textArea'"
+  <input  *ngIf="inputType!='textArea' && inputType!='checkbox'"
          [type]="inputType"
          [id]="formControlName"
          [name]="formControlName"
@@ -22,6 +22,7 @@
   </textarea>
 
 
+  <!-- Mejor meter en clase nueva-->
   <input  *ngIf="inputType=='checkbox'"
          [type]="inputType"
          [id]="formControlName"
@@ -31,18 +32,6 @@
          [attr.aria-invalid]="hasError(formControlName)"
          (click)="onChecked($event)"
          (blur)="touchedCallBack()">
-
-
-
-  <input  *ngIf="inputType=='radio'"
-         [type]="inputType"
-         [id]="formControlName"
-         [name]="formControlName"
-         [value]="value"
-         [placeholder]="placeholder"
-         [attr.aria-invalid]="hasError(formControlName)"
-         (blur)="touchedCallBack()">
-
 
 
   <small *ngIf="mustShowMessage(formControlName)">

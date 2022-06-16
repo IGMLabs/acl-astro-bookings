@@ -2,12 +2,12 @@
 
   <app-email-control formControlName="email"></app-email-control>
 
-  <app-template-control [form]="form"
-                        formControlName="password"
-                        inputType="password"
-                        label="Password"
-                        placeholder="Your password">
-  </app-template-control>
+  <app-input-template-control [form]="form"
+                              formControlName="password"
+                              inputType="password"
+                              label="Password"
+                              placeholder="Your password">
+  </app-input-template-control>
 
   <button [disabled]="form.invalid"
           (click)="onSave()">

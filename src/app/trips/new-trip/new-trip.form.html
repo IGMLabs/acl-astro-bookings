@@ -3,9 +3,9 @@
     <fieldset>
 
       <div>
-        <label for="agencyId"> Agency</label>
-        <select name="agencyId"
-                formControlName="agencyId">
+        <label for="agency"> Agency</label>
+        <select name="agency"
+                formControlName="agency">
           <option value="">Select an agency</option>
           <option *ngFor="let agency of agenciesHijo"
                   [value]="agency.id">{{ agency.name }}</option>
@@ -13,38 +13,38 @@
         <small *ngIf="mustShowMessage('agency')">{{ getErrorMessage('agency') }}</small>
       </div>
 
-      <app-template-control [form]="form"
-                            formControlName="destination"
-                            inputType="destination"
-                            label="Destination"
-                            placeholder="Your destination">
-      </app-template-control>
+      <app-input-template-control [form]="form"
+                                  formControlName="destination"
+                                  inputType="destination"
+                                  label="Destination"
+                                  placeholder="Your destination">
+      </app-input-template-control>
 
-      <app-template-control [form]="form"
-                            formControlName="places"
-                            inputType="text"
-                            label="Place"
-                            placeholder="Your place">
-      </app-template-control>
+      <app-input-template-control [form]="form"
+                                  formControlName="places"
+                                  inputType="text"
+                                  label="Place"
+                                  placeholder="Your place">
+      </app-input-template-control>
 
-      <app-template-control [form]="form"
-                            formControlName="start_date"
-                            inputType="date"
-                            label="Start Date">
-      </app-template-control>
+      <app-input-template-control [form]="form"
+                                  formControlName="start_date"
+                                  inputType="date"
+                                  label="Start Date">
+      </app-input-template-control>
 
-      <app-template-control [form]="form"
-                            formControlName="end_date"
-                            inputType="date"
-                            label="End Date">
-      </app-template-control>
+      <app-input-template-control [form]="form"
+                                  formControlName="end_date"
+                                  inputType="date"
+                                  label="End Date">
+      </app-input-template-control>
 
-      <app-template-control [form]="form"
-                            formControlName="flightPrice"
-                            inputType="number"
-                            label="Flight Price"
-                            placeholder="Flight Price">
-      </app-template-control>
+      <app-input-template-control [form]="form"
+                                  formControlName="flightPrice"
+                                  inputType="number"
+                                  label="Flight Price"
+                                  placeholder="Flight Price">
+      </app-input-template-control>
 
     </fieldset>
   </div>

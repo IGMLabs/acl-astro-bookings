@@ -5,6 +5,7 @@ import { TripsApi } from '../core/api/trips.api';
 import { AgenciesApi } from '../core/api/agencies.api';
 import { Booking } from '../core/api/booking.interface';
 import { BookingsApi } from '../core/api/bookings.api';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -13,31 +14,26 @@ import { BookingsApi } from '../core/api/bookings.api';
 })
 export class HomePage implements OnInit {
 
-tripsPadre: Trip[] = [];
-agenciesPadre: Agency[] = [];
-bookingsPadre: Booking[] = [];
+tripsPadre$   : Observable<Trip[]>;
+agenciesPadre$: Observable<Agency[]>;
+bookingsPadre$: Observable<Booking[]>;
 
 public reloading = false;
 
+constructor( private tripsApi   :TripsApi,
+             private agenciesApi:AgenciesApi,
+             private bookingsApi:BookingsApi ) {
 
-public reload(lista: string) {
-  this.reloading=true;
-  console.log('Reloading.....'+lista);
+  this.agenciesPadre$ = this.agenciesApi.getAll$();
+  this.tripsPadre$    = this.tripsApi.getAll$();
+  this.bookingsPadre$ = this.bookingsApi.getAll$();
 }
 
-  constructor( tripsApi:TripsApi, agenciesApi:AgenciesApi, bookingsApi:BookingsApi ) {
-
-      tripsApi.getAll$().subscribe( (data) => {
-        this.tripsPadre = data;
-      });
-      agenciesApi.getAll$().subscribe( (data) => {
-        this.agenciesPadre = data;
-      });
-      bookingsApi.getAll$().subscribe( (data) => {
-        this.bookingsPadre = data;
-      });
-
-   }
+public onReload() {
+  this.agenciesPadre$ = this.agenciesApi.getAll$();
+  this.tripsPadre$    = this.tripsApi.getAll$();
+  this.bookingsPadre$ = this.bookingsApi.getAll$();
+}
 
   ngOnInit(): void {
   }

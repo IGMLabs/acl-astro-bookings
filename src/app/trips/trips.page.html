@@ -4,6 +4,8 @@
         Add a new Trip
   </a>
 </nav>
+<br>
+<app-search (search)="onSearch($event)"></app-search>
 <!-- app-trips-list [tripsHijo]="tripsPadre"  Aqui indicamos que el trips lo enviamos del hijo"[trips]" al padre-->
 <!-- (reloading)="onReload()" Aqui indicamos que el hijo dispara el evento reload que hara ejecutarse onReload en el padre-->
 <app-trips-list *ngIf="(trips$ | async) as tripsPadre; else waiting"

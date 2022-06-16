@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { ReloadingComponent } from './reloading/reloading.component';
 import { AgenciesList } from './components/agencies/agencies.list';
 import { TripsList } from './components/trips/trips.list';
-import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BookingsList } from './components/bookings/bookings.list';
 import { EmailControl } from './controls/email/email.control';
-import { TemplateControl } from './controls/template/template.control';
+import { InputTemplateControl } from './controls/template/input-template.control';
 import { SearchControl } from './controls/search/search.control';
+import { SelectTemplateControl } from './controls/template/select-template.control';
 
 
 
@@ -19,8 +21,9 @@ import { SearchControl } from './controls/search/search.control';
     TripsList,
     BookingsList,
     EmailControl,
-    TemplateControl,
-    SearchControl
+    InputTemplateControl,
+    SearchControl,
+    SelectTemplateControl
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,12 @@ import { SearchControl } from './controls/search/search.control';
     TripsList,
     RouterModule, // Al exportar el router aqui, cualquiera que importe el shared, tendra acceso al routerlink (router module)
     // Al importarlo para usar desde otros hay que exportarlo.
-    ReactiveFormsModule, BookingsList, EmailControl, TemplateControl, SearchControl
+    ReactiveFormsModule,
+    BookingsList,
+    EmailControl,
+    InputTemplateControl,
+    SelectTemplateControl,
+    SearchControl
   ]
 })
 export class SharedModule { }

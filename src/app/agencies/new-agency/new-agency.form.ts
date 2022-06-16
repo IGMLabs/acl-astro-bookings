@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import {FormBuilder, FormControl, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 import { Agency } from 'src/app/core/api/agency.interface';
 import { IdName } from 'src/app/core/api/id-name.interface';
@@ -17,6 +17,7 @@ export class NewAgencyForm extends FormBase implements OnInit {
   @Input() public statuses: string[] = [];
   @Output() public save = new EventEmitter<Agency>();
 
+  public label: string[] = ['pending','active'];
 
   constructor(
     formBuilder: FormBuilder,
@@ -28,7 +29,7 @@ export class NewAgencyForm extends FormBase implements OnInit {
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       range: new FormControl('', [Validators.required]),
-      status: new FormControl(this.statuses[0]),
+      status: new FormControl(this.statuses[0], [Validators.required]),
     });
   }
 

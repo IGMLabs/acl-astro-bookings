@@ -72,5 +72,22 @@ export class FormValidationsService {
     return null;
   }
 
+  controlDate(control: AbstractControl): ValidationErrors | null {
+    const date = control.value;
+    const dateTo = new Date();
+    if (!date) {
+      return {
+        dateControl: 'Dates dont exist',
+      };
+    }
+    const dateDate= new Date(date);
+    if (dateDate < dateTo) {
+      return {
+        dateControl: 'Dates wrong',
+      };
+    }
+    return null;
+  }
+
 }
 

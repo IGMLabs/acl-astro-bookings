@@ -10,34 +10,34 @@
     <small *ngIf="mustShowMessage('name')">{{ getErrorMessage('name') }}</small>
   </div> -->
 
-  <app-template-control [form]="form"
-                        formControlName="name"
-                        label="Name"
-                        placeholder="Your name">
-  </app-template-control>
+  <app-input-template-control [form]="form"
+                              formControlName="name"
+                              label="Name"
+                              placeholder="Your name">
+  </app-input-template-control>
 
   <app-email-control formControlName="email"></app-email-control>
 
-  <app-template-control [form]="form"
-                        formControlName="password"
-                        inputType="password"
-                        label="Password"
-                        placeholder="Your password">
-  </app-template-control>
+  <app-input-template-control [form]="form"
+                              formControlName="password"
+                              inputType="password"
+                              label="Password"
+                              placeholder="Your password">
+  </app-input-template-control>
 
-  <app-template-control [form]="form"
-                        formControlName="confirmPassword"
-                        inputType="password"
-                        label="Confirm Password"
-                        placeholder="Confirm Your password">
-  </app-template-control>
+  <app-input-template-control [form]="form"
+                              formControlName="confirmPassword"
+                              inputType="password"
+                              label="Confirm Password"
+                              placeholder="Confirm Your password">
+  </app-input-template-control>
 
 
-  <app-template-control [form]="form"
+  <app-input-template-control [form]="form"
                         inputType="checkbox"
                         formControlName="acceptTerms"
                         label="Accept Terms">
-  </app-template-control>
+  </app-input-template-control>
 
   <pre> {{ form.errors | json }} </pre>
   <button [disabled]="form.invalid" (click)="onSave()">Save</button>

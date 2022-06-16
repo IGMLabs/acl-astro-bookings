@@ -28,23 +28,18 @@ export class EmailControl extends FormBase implements OnInit, ControlValueAccess
     })
    }
 
+   writeValue(value: any): void {
+    //  super.form.get('email')?.setValue(value);
+     this.form.setValue({email:value}, {emitEvent: false});
+    }
+    registerOnChange(changeCallback: any): void {
+      this.form.valueChanges.subscribe(changeCallback);
+    }
+    registerOnTouched(touchedCallBack: any): void {
+     this.touchedCallBack = touchedCallBack;
+    }
 
-  writeValue(value: any): void {
-    this.form.setValue({ email: value }, { emitEvent: false });
+    ngOnInit(): void {
+    }
+
   }
-
-
-  registerOnChange(changeCallBack: any): void {
-    this.form.valueChanges.subscribe(changeCallBack);
-  }
-
-
-  registerOnTouched(touchedCallBack: any): void {
-    this.touchedCallBack = touchedCallBack;
-  }
-
-
-  ngOnInit(): void {
-  }
-
-}

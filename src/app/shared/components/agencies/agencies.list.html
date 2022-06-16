@@ -2,13 +2,26 @@
   <h3> Trabajando con {{getAgenciesLength()}} agencias</h3>
   <ul>
     <li *ngFor="let agency of agenciesHijo">
+
+      <a [routerLink]="['.']"
+         [queryParams]="{ q: agency.id }"
+         queryParamsHandling="merge">
+                🎪
+      </a>
+
+      <span (click)="onSearchClick(agency.id)">🎢</span>
+
       <a [routerLink]="['/','agencies','agency', agency.id ]"
-         [ngClass]="agency.status | lowercase">{{ agency.name }}</a>
-      <ng-container *ngIf="agency.range==='Interplanetary' then interplanetario; else orbital">Esto aparece</ng-container>
+         [ngClass]="agency.status | lowercase">
+                  {{ agency.name }}
+      </a>
+
+      <ng-container *ngIf="agency.range==='Interplanetary' then interplanetario; else orbital">
+                Esto aparece
+      </ng-container>
       <ng-template #interplanetario> 🎇 </ng-template>
-      <ng-template #orbital> 🧨 </ng-template>
-      <!-- <span *ngIf="agency.range==='Interplanetary'">🎇</span>
-      <span *ngIf="agency.range==='Orbital'">🧨</span> -->
+      <ng-template #orbital>         🧨 </ng-template>
+
     </li>
   </ul>
   <button (click)="onReloadClick('agencies')"> 😎 </button>

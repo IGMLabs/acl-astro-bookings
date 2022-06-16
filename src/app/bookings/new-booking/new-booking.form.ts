@@ -5,6 +5,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
 import { CommonService } from 'src/app/core/services/common/common.service';
 import { FormBase } from '../../core/services/forms/form.base';
+import { FormValidationsService } from '../../core/services/forms/form-validations.service';
 
 @Component({
   selector: 'app-new-booking-form',
@@ -20,6 +21,7 @@ export class NewBookingForm extends FormBase implements OnInit {
 constructor(
             formBuilder: FormBuilder,
             fms: FormMessagesService,
+            fvs: FormValidationsService,
             private cs: CommonService
             ) {
 
@@ -30,7 +32,7 @@ constructor(
   this.form = formBuilder.group({
     tripId: new FormControl('', [Validators.required]),
     passengerName: new FormControl('', [Validators.required]),
-    date: new FormControl(new Date().toLocaleDateString('en-US'), [Validators.required]),
+    date: new FormControl(new Date().toLocaleDateString('en-US'), [Validators.required, fvs.controlDate]),
     luggageKilos: new FormControl('', [Validators.required]),
     hasPremiumFoodPrice: new FormControl(false),
 

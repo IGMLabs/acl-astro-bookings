@@ -1,19 +1,19 @@
 <form [formGroup]="form">
 
-  <app-template-control [form]="form"
+  <app-input-template-control [form]="form"
                         formControlName="name"
                         label="Name"
                         placeholder="Your name">
-  </app-template-control>
+  </app-input-template-control>
 
   <app-email-control formControlName="email"></app-email-control>
 
-  <app-template-control [form]="form"
+  <app-input-template-control [form]="form"
                         formControlName="message"
                         inputType="textArea"
                         label="Message"
                         placeholder="Your message">
-  </app-template-control>
+  </app-input-template-control>
 
   <button [disabled]="form.invalid"
           (click)="onSave()">

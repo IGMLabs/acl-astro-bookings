@@ -13,24 +13,30 @@
         <small *ngIf="mustShowMessage('tripId')">{{ getErrorMessage('tripId') }}</small>
       </div>
 
-      <app-template-control [form]="form"
+      <app-input-template-control [form]="form"
                             formControlName="passengerName"
                             label="Passenger Name"
                             placeholder="Passenger name">
-      </app-template-control>
+      </app-input-template-control>
 
-      <app-template-control [form]="form"
+      <app-input-template-control [form]="form"
+                                  formControlName="date"
+                                  inputType="date"
+                                  label="Date">
+      </app-input-template-control>
+
+      <app-input-template-control [form]="form"
                             formControlName="luggageKilos"
                             type="number"
                             label="Luggage Kilos"
                             placeholder="Luggage Kilos">
-      </app-template-control>
+      </app-input-template-control>
 
-      <app-template-control [form]="form"
+      <app-input-template-control [form]="form"
                             inputType="checkbox"
                             formControlName="hasPremiumFoodPrice"
                             label="Premium Food Price">
-      </app-template-control>
+      </app-input-template-control>
 
     </fieldset>
   </div>

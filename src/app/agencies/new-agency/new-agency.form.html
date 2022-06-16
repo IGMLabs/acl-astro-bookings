@@ -1,11 +1,11 @@
 <form [formGroup]="form">
   <fieldset>
 
-    <app-template-control [form]="form"
-                          formControlName="name"
-                          label="Agency Name"
-                          placeholder="Your agency name">
-    </app-template-control>
+    <app-input-template-control [form]="form"
+                                formControlName="name"
+                                label="Agency Name"
+                                placeholder="Your agency name">
+    </app-input-template-control>
 
     <div>
       <label for="range"> Operation range </label>
@@ -21,23 +21,47 @@
       <small *ngIf="mustShowMessage('range')">{{ getErrorMessage('range') }}</small>
     </div>
 
-    <label for="status"> Status </label>
-    <app-template-control *ngFor="let status of statuses"
-                          [form]="form"
-                          formControlName="status"
-                          inputType="radio"
-                          [label]="status">
-    </app-template-control>
+    <!-- <div>
+      <label for="status"> Status </label>
+        <ng-container *ngFor="let status of statuses">
+          <label for="status-{{status}}">
+          <app-select-template-control *ngFor         ="let status of statuses"
+                                      [form]          ="form"
+                                      formControlName ="status"
+                                      inputType       ="radio"
+                                      value           ="status"
+                                      [label]         ="label">
+          </app-select-template-control>
+                {{ status }}
+      </label>
+    </ng-container>
+  </div> -->
+  <div>
+    <label for="status"> Operative status </label>
+    <ng-container *ngFor="let status of statuses">
+      <label for="status-{{status}}">
+        <input name="status"
+               type="radio"
+               id="status-{{status}}"
+               formControlName="status"
+               [value]="status">
+        {{ status }}
+      </label>
+    </ng-container>
+  </div>
+
 
   </fieldset>
 
 
   <div>
     <button type="submit"
-            (click)="onSubmitClick()"
+            (click)   ="onSubmitClick()"
             [disabled]="form.invalid">
               Send new agency data
     </button>
   </div>
 
 </form>
+
+
