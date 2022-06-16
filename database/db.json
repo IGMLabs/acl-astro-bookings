@@ -44,6 +44,12 @@
       "name": "Virgin Way",
       "range": "Orbital",
       "status": "Pending"
+    },
+    {
+      "id": "asdasd",
+      "name": "asdasd",
+      "range": "Interplanetary",
+      "status": "Active"
     }
   ],
   "trips": [

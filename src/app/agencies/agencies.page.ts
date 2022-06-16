@@ -20,14 +20,16 @@ export class AgenciesPage implements OnInit {
   constructor(private agenciesApi: AgenciesApi,
               private route: ActivatedRoute,
               private tripsApi: TripsApi) {
-    this.agencies$ = this.search$.pipe(
-      // map((searchTerm) => this.agenciesApi.getByText$(searchTerm))
-      switchMap((searchTerm) => this.agenciesApi.getByText$(searchTerm))
-      // concatMap((searchTerm) => this.agenciesApi.getByText$(searchTerm))
-      // exhaustMap((searchTerm) => this.agenciesApi.getByText$(searchTerm))
-    );
+                this.agencies$ = this.search$.pipe(
+                  // map((searchTerm) => this.agenciesApi.getByText$(searchTerm))
+                  switchMap((searchTerm) => this.agenciesApi.getByText$(searchTerm))
+                  // concatMap((searchTerm) => this.agenciesApi.getByText$(searchTerm))
+                  // exhaustMap((searchTerm) => this.agenciesApi.getByText$(searchTerm))
+                );
+
   //  const q = this.route.snapshot.queryParamMap.get('q');
   //  console.log(q);
+
   this.route.queryParamMap.subscribe((queryParamMap) => {
     const q = queryParamMap.get('q');
     this.trips$ = this.tripsApi.getByText$(q);

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FormMessagesService } from 'src/app/core/services/forms/form-messages.service';
 import { FormValidationsService } from 'src/app/core/services/forms/form-validations.service';
 import { FormBase } from 'src/app/core/services/forms/form.base';
+import { AuthApi } from '../auth.api';
+import { Register } from '../../core/api/register.interface';
 
 @Component({
   selector: 'app-register-form',
@@ -11,7 +13,8 @@ import { FormBase } from 'src/app/core/services/forms/form.base';
 })
 export class RegisterForm extends FormBase implements OnInit {
 
-  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, fms: FormMessagesService) {
+  @Output() public save = new EventEmitter<Register>();
+  constructor(formBuilder: FormBuilder, fvs: FormValidationsService, fms: FormMessagesService, private aa: AuthApi) {
     super(fms)
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
@@ -26,10 +29,13 @@ export class RegisterForm extends FormBase implements OnInit {
 
 
   public onSave() {
-    const {name, email, password, acceptTerms} = this.form.value;
-    const register = {name, email, password, acceptTerms};
+    const {name, mail, password, id} = this.form.value;
+    const register = {name, mail, password, id};
     console.warn('Send Register', register);
+    // this.aa.postRegister$(newRegister).subscribe();
+    this.save.emit(register);
   }
+
 
 
   ngOnInit(): void {
