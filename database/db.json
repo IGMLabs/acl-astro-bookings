@@ -1,5 +1,12 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "asdasdas@gmail.com",
+      "password": "$2a$10$hKmpWGXeiXy4aJt0nDQaxuJV9CXYpNEZjfbM7Nso9QBQj/lXKj.he",
+      "name": "alejandro",
+      "id": 1
+    }
+  ],
   "bookings": [
     {
       "id": "space-y-mallorca-juan",

@@ -29,8 +29,8 @@ export class RegisterForm extends FormBase implements OnInit {
 
 
   public onSave() {
-    const {name, mail, password, id} = this.form.value;
-    const register = {name, mail, password, id};
+    const {name, email, password} = this.form.value;
+    const register = {name, email:email.email, password };
     console.warn('Send Register', register);
     // this.aa.postRegister$(newRegister).subscribe();
     this.save.emit(register);
