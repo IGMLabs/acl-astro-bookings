@@ -14,7 +14,7 @@ export class AuthApi {
 
   public accessToken = '';
 
-  constructor(private http: HttpClient) {
+  constructor(protected http: HttpClient) {
 
   }
 

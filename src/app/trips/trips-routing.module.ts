@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticatedGuard } from '../auth/api/authenticated.guard';
 import { TripsPage } from './trips.page';
 
 const routes: Routes = [
@@ -9,6 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'trip/new',
+    canLoad: [AuthenticatedGuard],
     loadChildren: () => import('./new-trip/new-trip.module').then(m => m.NewTripModule)
   },
   {
